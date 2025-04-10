@@ -1,6 +1,9 @@
-*.pkg
-*.exe
-dist/ExcelRounder.app/Contents/MacOS/ExcelRounder
-dist/OSCheckProcessor.app/Contents/MacOS/OSCheckProcessor
-build/*
-dist/*
+*.pkg filter=lfs diff=lfs merge=lfs -text
+*.exe filter=lfs diff=lfs merge=lfs -text
+dist/ExcelRounder.app/Contents/MacOS/ExcelRounder filter=lfs diff=lfs merge=lfs -text
+dist/OSCheckProcessor.app/Contents/MacOS/OSCheckProcessor filter=lfs diff=lfs merge=lfs -text
+build/* filter=lfs diff=lfs merge=lfs -text
+dist/* filter=lfs diff=lfs merge=lfs -text
+build/ExcelRounder/ExcelRounder.pkg filter=lfs diff=lfs merge=lfs -text
+build/OSCheckProcessor/OSCheckProcessor.pkg filter=lfs diff=lfs merge=lfs -text
+dist/ExcelRounder filter=lfs diff=lfs merge=lfs -text
