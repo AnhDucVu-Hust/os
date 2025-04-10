@@ -1,0 +1,4 @@
+.pkg
+.exe
+dist/ExcelRounder.app/Contents/MacOS/ExcelRounder
+dist/OSCheckProcessor.app/Contents/MacOS/OSCheckProcessor
