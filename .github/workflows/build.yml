@@ -28,13 +28,14 @@ jobs:
         python -m PyInstaller --name=OSDocument --onefile --windowed --exclude-module matplotlib --exclude-module tkinter --exclude-module scipy os_document_gui.py
     
     - name: Upload ExcelRounder
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: ExcelRounder
         path: dist/ExcelRounder.exe
-        
+      
     - name: Upload OSDocument
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: OSDocument
         path: dist/OSDocument.exe
+      
