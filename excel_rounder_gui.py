@@ -4,6 +4,7 @@ from PyQt5.QtCore import Qt
 import pandas as pd
 from iteround import saferound
 import numpy as np
+import os
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -55,11 +56,21 @@ class MainWindow(QMainWindow):
                             if row["Task round"] > row["ULNL task"]:
                                 row["Task round"] = (row["Task round"] * 100 - 1) / 100
                                 break
+                
+                # Cập nhật giá trị cột ULNL task bằng với Task round
+                group['ULNL task'] = group['Task round']
+
+                # Xóa cột Task round
+                group.drop(columns=['Task round'], inplace=True)
+
                 new_groups.append(group)
+
+            # Create output file path
+            output_file_name = os.path.basename(file_path).replace(".xlsx", "_new.xlsx")  # Tên file mới
+            output_path = os.path.join(os.path.dirname(file_path), output_file_name)  # Đường dẫn đầy đủ
 
             # Create output file
             df_new = pd.concat(new_groups)
-            output_path = file_path.replace(".xlsx", "_new.xlsx")
             df_new.sort_index().to_excel(output_path, index=None)
             
             self.status_label.setText("Complete!")

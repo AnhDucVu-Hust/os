@@ -1,8 +1,8 @@
 import PyInstaller.__main__
 
 PyInstaller.__main__.run([
-    'os_check_gui.py',
-    '--name=OSCheckProcessor',
+    'os_document_gui.py',
+    '--name=OSDocument',
     '--onefile',
     '--windowed',
     '--add-data=requirements.txt:.'
