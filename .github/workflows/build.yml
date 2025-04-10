@@ -1,0 +1,40 @@
+name: Build Windows Executables
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyinstaller PyQt5 pandas numpy styleframe roman openpyxl iteround
+    
+    - name: Build ExcelRounder
+      run: |
+        python -m PyInstaller --name=ExcelRounder --onefile --windowed excel_rounder_gui.py
+    
+    - name: Build OSCheckProcessor
+      run: |
+        python -m PyInstaller --name=OSCheckProcessor --onefile --windowed os_check_gui.py
+    
+    - name: Upload ExcelRounder
+      uses: actions/upload-artifact@v2
+      with:
+        name: ExcelRounder
+        path: dist/ExcelRounder.exe
+        
+    - name: Upload OSCheckProcessor
+      uses: actions/upload-artifact@v2
+      with:
+        name: OSCheckProcessor
+        path: dist/OSCheckProcessor.exe
