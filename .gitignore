@@ -1,7 +1,6 @@
-build/
 dist/
+build/
+*.pkg
+*.exe
+*.app
 *.spec
-__pycache__/
-*.pyc
-.DS_Store
-venv/
